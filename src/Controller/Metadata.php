@@ -15,7 +15,7 @@ class Metadata
     public function __invoke(Auth $auth): Response
     {
         return new Response(
-            content: $auth->getSettings()->getSPMetadata(),
+            content: $auth->getSettings()->getSPMetadata(validUntil: ($auth->getSettings()->getSPData()['validUntil'] ?? null)),
             headers: ['Content-Type' => 'xml'],
         );
     }

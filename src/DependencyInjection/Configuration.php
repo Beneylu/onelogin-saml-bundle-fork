@@ -148,6 +148,7 @@ class Configuration implements ConfigurationInterface
                                     ->scalarNode('x509cert')->end()
                                     ->scalarNode('privateKey')->end()
                                     ->scalarNode('x509certNew')->end()
+                                    ->scalarNode('validUntil')->end()
                                 ->end()
                             ->end()
                             ->arrayNode('compress')
