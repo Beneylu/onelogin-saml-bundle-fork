@@ -183,7 +183,8 @@ class SamlAuthenticator implements AuthenticatorInterface, AuthenticationEntryPo
 
     protected function extractAttributes(Auth $oneLoginAuth): array
     {
-        $attributes = $this->options['use_attribute_friendly_name'] ?? false
+        $useFriendlyName = $oneLoginAuth->getSettings()->getSecurityData()['useAttributeFriendlyName'] ?? $this->options['useAttributeFriendlyName'] ?? false ;
+        $attributes = $useFriendlyName
             ? $oneLoginAuth->getAttributesWithFriendlyName()
             : $oneLoginAuth->getAttributes();
         $attributes[self::SESSION_INDEX_ATTRIBUTE] = $oneLoginAuth->getSessionIndex();

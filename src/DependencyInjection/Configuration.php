@@ -181,6 +181,7 @@ class Configuration implements ConfigurationInterface
                                     ->end()
                                     ->variableNode('identifierAttribute')->end()
                                     ->variableNode('mergeIdentifierSeparator')->end()
+                                    ->booleanNode('useAttributeFriendlyName')->defaultFalse()->end()
                                     ->booleanNode('wantXMLValidation')->end()
                                     ->booleanNode('relaxDestinationValidation')->end()
                                     ->booleanNode('destinationStrictlyMatches')->end()
