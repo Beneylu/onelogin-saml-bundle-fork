@@ -40,6 +40,11 @@ class Login
             }
         }
 
+        $settings = $auth->getSettings()->getSecurityData();
+        if ($settings['relayState']) {
+            $targetPath =  (string) $settings['relayState'];
+        }
+
         if ($error instanceof \Throwable) {
             throw new \RuntimeException($error->getMessage());
         }
