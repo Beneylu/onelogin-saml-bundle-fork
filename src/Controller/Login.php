@@ -41,7 +41,7 @@ class Login
         }
 
         $settings = $auth->getSettings()->getSecurityData();
-        if ($settings['relayState']) {
+        if (isset($settings['relayState']) && $settings['relayState']) {
             $targetPath =  (string) $settings['relayState'];
         }
 
