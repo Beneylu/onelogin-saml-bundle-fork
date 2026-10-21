@@ -175,7 +175,16 @@ class Configuration implements ConfigurationInterface
                                             ->thenInvalid('must be an array or a boolean.')
                                         ->end()
                                         ->validate()
-                                            ->ifTrue(static fn ($value) => \is_array($value) && array_filter($value, static fn ($item): bool => !str_starts_with($item, 'urn:oasis:names:tc:SAML:2.0:ac:classes:')))
+                                            ->ifTrue(static fn ($value) => \is_array($value) && array_filter(
+                                                    $value,
+                                                    static fn ($item): bool => !str_starts_with(
+                                                            $item,
+                                                            'urn:oasis:names:tc:SAML:2.0:ac:classes:'
+                                                        ) && !\in_array($item, [
+                                                            'https://educonnect.education.gouv.fr/responsable/password',
+                                                            'https://educonnect.education.gouv.fr/eleve/password',
+                                                        ], true)
+                                                ))
                                             ->thenInvalid('invalid value.')
                                         ->end()
                                     ->end()
